@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -47,3 +48,13 @@
     font-weight: 700;
   }
   
+  .journalism {
+    font-family: "Satisfy", serif;
+    font-weight: 400;
+  }
+  
+  .time-bold {
+    font-family: "Philosopher", serif;
+    font-weight: 700;
+    font-style: normal;
+  }

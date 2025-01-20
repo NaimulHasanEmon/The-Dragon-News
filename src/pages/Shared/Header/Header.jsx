@@ -6,10 +6,10 @@ const Header = () => {
   return (
     <div className='my-10 text-center mb-7 flex flex-col gap-2'>
       <Link to='/'>
-        <img className='mx-auto' src={Logo} alt='The Dragon News' />
+        <img className='mx-auto mb-3' src={Logo} alt='The Dragon News' />
       </Link>
-      <p className='text-xl'>Journalism Without Fear or Favour</p>
-      <p className='text-xl'>{moment().format("dddd, MMMM Do, YYYY")}</p>
+      <p className='text-xl journalism'>Journalism Without Fear or Favour</p>
+      <p className='text-xl time-bold'>{moment().format("dddd, MMMM Do, YYYY")}</p>
     </div>
   );
 };
