@@ -1,8 +1,23 @@
 import { Link, NavLink } from "react-router-dom";
-import userDefaultPic from '../../../../src/assets/Images/user.png';
-import './Navber.css';
+import userDefaultPic from "../../../../src/assets/Images/user.png";
+import UserLogInPicture from "../../../../src/assets/Images/UserLogInPicture.jpg";
+import "./Navber.css";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+     .then(() => {
+        console.log('User logged out successfully.');
+      })
+     .catch((error) => {
+        console.log("Error: " + error.message);
+      });
+  }
+
   const navLinks = (
     <>
       <li>
@@ -45,17 +60,21 @@ const Navbar = () => {
         </div>
       </div>
       <div className='navbar-center hidden lg:flex'>
-        <ul className='menu-horizontal px-1 flex gap-4 poppins-medium'>{navLinks}</ul>
+        <ul className='menu-horizontal px-1 flex gap-4 poppins-medium'>
+          {navLinks}
+        </ul>
       </div>
       <div className='navbar-end flex gap-2'>
         <div className='avatar'>
           <div className='h-8 rounded-full'>
-            <img src={userDefaultPic} />
+            <img src={user ? UserLogInPicture : userDefaultPic} />
           </div>
         </div>
         <Link to='/login'>
-          <button className='rounded-none btn-sm bg-slate-700 text-white'>
-            Login
+          <button
+          onClick={() => handleLogOut()}
+          className='rounded-none btn-sm bg-slate-700 text-white uppercase poppins-medium'>
+            {user ? "log out" : "log in"}
           </button>
         </Link>
       </div>

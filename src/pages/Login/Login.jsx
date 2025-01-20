@@ -1,16 +1,28 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+
+  const {logInUser} = useContext(AuthContext)
 
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
-    console.log(form.get("email"));
+    const email = form.get('email');
+    const password = form.get('password');
+
+    logInUser(email, password)
+    .then(result => {
+      console.log(result.user);  
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
   };
 
   return (
