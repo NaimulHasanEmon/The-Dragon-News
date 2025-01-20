@@ -4,6 +4,7 @@ import RightSideNav from "../Shared/RightSideNav/RightSideNav";
 import Navbar from "../Shared/Navbar/Navbar";
 import BreakingNews from "./BreakingNews";
 import DragonNewsHome from "../Shared/DragonNewsHome/DragonNewsHome";
+import RightSideDown from "../Shared/RightSideDown/RightSideDown";
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
                 </div>
                 <div>
                     <RightSideNav></RightSideNav>
+                    <RightSideDown></RightSideDown>
                 </div>
             </div>
         </div>
