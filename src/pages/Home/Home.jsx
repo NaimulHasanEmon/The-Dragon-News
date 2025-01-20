@@ -7,7 +7,7 @@ import DragonNewsHome from "../Shared/DragonNewsHome/DragonNewsHome";
 
 const Home = () => {
     return (
-        <div className="my-10">
+        <div>
             <Header></Header>
             <BreakingNews></BreakingNews>
             <Navbar></Navbar>
