@@ -1,0 +1,7 @@
+.menu-horizontal li a.active {
+    color: rgb(6, 182, 182);
+}
+
+.menu-horizontal li a:hover {
+    text-decoration: underline;
+}

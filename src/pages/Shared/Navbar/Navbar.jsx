@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import userDefaultPic from '../../../../src/assets/Images/user.png';
+import './Navber.css';
 
 const Navbar = () => {
   const navLinks = (
@@ -44,7 +45,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className='navbar-center hidden lg:flex'>
-        <ul className='menu menu-horizontal px-1'>{navLinks}</ul>
+        <ul className='menu-horizontal px-1 flex gap-4 poppins-medium'>{navLinks}</ul>
       </div>
       <div className='navbar-end flex gap-2'>
         <div className='avatar'>
