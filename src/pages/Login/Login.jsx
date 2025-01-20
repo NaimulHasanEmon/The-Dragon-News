@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
@@ -7,22 +7,26 @@ import { AuthContext } from "../../providers/AuthProvider";
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
 
-  const {logInUser} = useContext(AuthContext)
+  const { logInUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
-    const email = form.get('email');
-    const password = form.get('password');
+    const email = form.get("email");
+    const password = form.get("password");
 
     logInUser(email, password)
-    .then(result => {
-      console.log(result.user);  
-    })
-    .catch(error => {
-      console.log(error.message);
-    })
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -37,27 +41,29 @@ const Login = () => {
           </div>
           <hr className='mb-6' />
           <form onSubmit={handleLogin}>
-            <label
-              className='text-sm font-semibold text-gray-600'
-              htmlFor='email'
-            >
-              E-mail
-            </label>
-            <input
-              className='w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400'
-              type='email'
-              name='email'
-              required
-              placeholder='Enter your email address'
-            />
             <div>
+              <label
+                className='text-sm font-semibold text-gray-600'
+                htmlFor='email'
+              >
+                E-mail
+              </label>
+              <input
+                className='w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400'
+                type='email'
+                name='email'
+                required
+                placeholder='Enter your email address'
+              />
+            </div>
+            <div className='mt-4'>
               <label
                 className='text-sm font-semibold text-gray-600 mt-4'
                 htmlFor='password'
               >
                 Password
               </label>
-              <div className="relative">
+              <div className='relative'>
                 <input
                   className='w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400'
                   type={showPass ? "text" : "password"}

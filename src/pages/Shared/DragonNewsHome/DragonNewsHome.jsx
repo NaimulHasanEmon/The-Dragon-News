@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CiBookmark, CiShare2 } from "react-icons/ci";
 import star from "../../../assets/Images/star.png";
 import { FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const DragonNewsHome = () => {
   const [news, setNews] = useState([]);
@@ -48,7 +49,16 @@ const DragonNewsHome = () => {
                 {/* Image */}
                 <img src={singleNews.image_url} alt={singleNews.title} />{" "}
                 {/* Article */}
-                <p>{singleNews.details}</p>
+                {/* <p>{singleNews.details}</p> */}
+                {singleNews.details.length > 250 ? (
+                  <>
+                    <p>{singleNews.details.slice(0, 250)}... <Link
+                    to={`/news/${singleNews._id}`}
+                    className="text-orange-400 poppins-semibold">Read More</Link></p>
+                  </>
+                ) : (
+                  <p>{singleNews.details}</p>
+                )}
               </div>
               {/* Rate and View */}
               <div className='flex justify-between items-center px-5 border-t-2 border-base-200 p-2'>
@@ -60,7 +70,7 @@ const DragonNewsHome = () => {
                   <img src={star} alt='' />
                   <p className='text-xl'>{singleNews.rating.number}</p>
                 </div>
-                <div className="flex gap-2 text-xl items-center">
+                <div className='flex gap-2 text-xl items-center'>
                   <FaEye />
                   <p>{singleNews.total_view}</p>
                 </div>
