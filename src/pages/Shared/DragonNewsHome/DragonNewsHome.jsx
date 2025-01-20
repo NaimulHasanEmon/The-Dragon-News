@@ -8,6 +8,9 @@ const DragonNewsHome = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
+    // Scroll to top of the page while the data is loading
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
     fetch("news.json")
       .then((res) => res.json())
       .then((data) => setNews(data));
