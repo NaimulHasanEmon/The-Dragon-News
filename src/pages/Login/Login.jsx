@@ -6,18 +6,16 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-
   const { logInUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
+    e.currentTarget.reset();
 
     logInUser(email, password)
       .then((result) => {
