@@ -10,10 +10,11 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-  const { logInUser, logInWithGoogle } = useContext(AuthContext);
+  const { logInUser, logInWithGoogle, loginWithGithub } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
+  // With email and password
   const handleLogin = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -31,12 +32,26 @@ const Login = () => {
       });
   };
 
+  // With Google
   const handleLoginWithGoogle = () => {
     logInWithGoogle()
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
+        console.log("Error: " + error.message);
+      });
+  };
+
+  // With Github
+  const handleLoginWithGithub = () => {
+    loginWithGithub()
+     .then((result) => {
+        console.log(result.user);
+        navigate(location?.state ? location.state : "/");
+      })
+     .catch((error) => {
         console.log("Error: " + error.message);
       });
   };
@@ -133,7 +148,9 @@ const Login = () => {
                           </button> */}
 
                 {/* Login with Github */}
-                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                <button
+                onClick={() => handleLoginWithGithub()}
+                className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
                   <DiGithubBadge className='text-2xl' />
                 </button>
 

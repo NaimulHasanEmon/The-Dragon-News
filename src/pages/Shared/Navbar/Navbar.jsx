@@ -65,7 +65,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className='navbar-end flex gap-2'>
-        <div className='avatar'>
+        <div className='avatar cursor-pointer'>
           <div className='h-8 rounded-full'>
             <img src={user ? UserLogInPicture : userDefaultPic} />
           </div>
@@ -73,7 +73,7 @@ const Navbar = () => {
         <Link to='/login'>
           <button
           onClick={() => handleLogOut()}
-          className='rounded-none btn-sm bg-slate-700 text-white uppercase poppins-medium'>
+          className='rounded-none btn-sm bg-slate-700 text-white uppercase poppins-medium hover:bg-[#D72050]'>
             {user ? "log out" : "log in"}
           </button>
         </Link>

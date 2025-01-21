@@ -10,10 +10,11 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
-  const { createUser, logInWithGoogle } = useContext(AuthContext);
+  const { createUser, logInWithGoogle,loginWithGithub } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
+  // With email and password
   const handleRegister = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -32,6 +33,7 @@ const Register = () => {
       });
   };
 
+  // With Google
   const handleGoogleRegister = () => {
     logInWithGoogle()
       .then((result) => {
@@ -42,6 +44,18 @@ const Register = () => {
         console.log("Error: " + error.message);
       });
   };
+
+  // With Github
+  const handleGithubRegister = () => {
+    loginWithGithub()
+     .then((result) => {
+        console.log(result.user);
+        navigate(location?.state? location.state : "/");
+      })
+     .catch((error) => {
+        console.log("Error: " + error.message);
+      });
+  }
 
   return (
     <div className='flex flex-col h-screen bg-base-200'>
@@ -197,7 +211,9 @@ const Register = () => {
                           </button> */}
 
                 {/* Login with Github */}
-                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                <button
+                  onClick={() => handleGithubRegister()}
+                className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
                   <DiGithubBadge className='text-2xl' />
                 </button>
 
