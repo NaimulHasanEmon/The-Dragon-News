@@ -3,6 +3,10 @@ import Navbar from "../Shared/Navbar/Navbar";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+// import { DiApple } from "react-icons/di";
+import { DiGithubBadge } from "react-icons/di";
+import { RiTwitterXLine } from "react-icons/ri";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
@@ -96,6 +100,34 @@ const Login = () => {
                 Register
               </Link>
             </p>
+          </div>
+
+          {/* Other Login Options */}
+          <div>
+            <p className="flex justify-center text-xs text-slate-500 mt-5">Or Login with</p>
+            <div>
+            <div class='flex gap-3'>
+                {/* Login with google */}
+                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                  <FcGoogle className='text-xl' />
+                </button>
+
+                {/* Login with Apple */}
+                {/* <button className='btn-google'>
+                            <DiApple className="text-2xl" />
+                          </button> */}
+
+                {/* Login with Github */}
+                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                  <DiGithubBadge className='text-2xl' />
+                </button>
+
+                {/* Login with X or Twitter */}
+                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                  <RiTwitterXLine className='text-2xl' />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

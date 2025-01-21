@@ -3,6 +3,10 @@ import Navbar from "../Shared/Navbar/Navbar";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+// import { DiApple } from "react-icons/di";
+import { DiGithubBadge } from "react-icons/di";
+import { RiTwitterXLine } from "react-icons/ri";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -20,7 +24,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location.state : '/');
+        navigate(location?.state ? location.state : "/");
         // form.reset()
       })
       .catch((error) => {
@@ -33,11 +37,15 @@ const Register = () => {
       <Navbar></Navbar>
       <div className='flex flex-col justify-center items-center h-screen'>
         <div className='max-w-md mx-auto w-full bg-white shadow-xl rounded-3xl sm:p-10 p-6'>
-          <div className='text-center mb-6'>
+          <div className='text-center mb-4'>
             <p className='text-2xl font-semibold'>Register Your Account</p>
           </div>
-          <hr className='mb-6' />
+          <hr className='mb-3' />
+
+          {/* Form */}
           <form onSubmit={handleRegister}>
+
+            {/* Name */}
             <div>
               <label
                 className='text-sm font-semibold text-gray-600'
@@ -53,7 +61,7 @@ const Register = () => {
                 placeholder='Enter your name'
               />
             </div>
-            <div className='mt-3'>
+            {/* <div className='mt-3'>
               <label
                 className='text-sm font-semibold text-gray-600'
                 htmlFor='url'
@@ -67,7 +75,9 @@ const Register = () => {
                 required
                 placeholder='Enter your photo URL'
               />
-            </div>
+            </div> */}
+
+            {/* Email */}
             <div className='mt-3'>
               <label
                 className=' text-sm font-semibold text-gray-600 mt-4'
@@ -83,6 +93,8 @@ const Register = () => {
                 placeholder='Enter your email address'
               />
             </div>
+
+            {/* Password */}
             <div className='mt-3'>
               <label
                 className=' text-sm font-semibold text-gray-600 mt-4'
@@ -106,6 +118,8 @@ const Register = () => {
                 </span>
               </div>
             </div>
+
+            {/* Terms and Conditions */}
             <div className='flex items-start mt-4'>
               <div className='flex items-center h-5'>
                 <input
@@ -127,6 +141,8 @@ const Register = () => {
                 </label>
               </div>
             </div>
+
+            {/* Register button */}
             <div className='mt-6'>
               <button
                 className='w-full py-2 px-4 bg-gray-700 text-white rounded-md hover:bg-gray-600'
@@ -136,7 +152,9 @@ const Register = () => {
               </button>
             </div>
           </form>
-          <div className='flex items-center justify-center mt-6'>
+
+          {/* Already have an account */}
+          <div className='flex items-center justify-center mt-4'>
             <p className='text-sm text-gray-500'>
               Already have an account?
               <Link
@@ -146,6 +164,36 @@ const Register = () => {
                 Login
               </Link>
             </p>
+          </div>
+
+          {/* Other Register Options */}
+          <div>
+            <p className='flex justify-center text-xs text-slate-500 mt-4'>
+              Or Login with
+            </p>
+            <div>
+              <div class='flex gap-3'>
+                {/* Login with google */}
+                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                  <FcGoogle className='text-xl' />
+                </button>
+
+                {/* Login with Apple */}
+                {/* <button className='btn-google'>
+                            <DiApple className="text-2xl" />
+                          </button> */}
+
+                {/* Login with Github */}
+                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                  <DiGithubBadge className='text-2xl' />
+                </button>
+
+                {/* Login with X or Twitter */}
+                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                  <RiTwitterXLine className='text-2xl' />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
