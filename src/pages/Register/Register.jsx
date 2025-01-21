@@ -10,7 +10,7 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logInWithGoogle } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -24,11 +24,22 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        e.currentTarget.reset();
         navigate(location?.state ? location.state : "/");
-        // form.reset()
       })
       .catch((error) => {
         console.log(error.message);
+      });
+  };
+
+  const handleGoogleRegister = () => {
+    logInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log("Error: " + error.message);
       });
   };
 
@@ -44,7 +55,6 @@ const Register = () => {
 
           {/* Form */}
           <form onSubmit={handleRegister}>
-
             {/* Name */}
             <div>
               <label
@@ -174,7 +184,10 @@ const Register = () => {
             <div>
               <div class='flex gap-3'>
                 {/* Login with google */}
-                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                <button
+                  onClick={() => handleGoogleRegister()}
+                  className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
+                >
                   <FcGoogle className='text-xl' />
                 </button>
 

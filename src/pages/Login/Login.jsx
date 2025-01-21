@@ -10,7 +10,7 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, logInWithGoogle } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -19,15 +19,25 @@ const Login = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    e.currentTarget.reset();
 
     logInUser(email, password)
       .then((result) => {
         console.log(result.user);
         navigate(location?.state ? location.state : "/");
+        e.currentTarget.reset();
       })
       .catch((error) => {
         console.log(error.message);
+      });
+  };
+
+  const handleLoginWithGoogle = () => {
+    logInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log("Error: " + error.message);
       });
   };
 
@@ -104,11 +114,16 @@ const Login = () => {
 
           {/* Other Login Options */}
           <div>
-            <p className="flex justify-center text-xs text-slate-500 mt-5">Or Login with</p>
+            <p className='flex justify-center text-xs text-slate-500 mt-5'>
+              Or Login with
+            </p>
             <div>
-            <div class='flex gap-3'>
+              <div class='flex gap-3'>
                 {/* Login with google */}
-                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                <button
+                  onClick={() => handleLoginWithGoogle()}
+                  className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
+                >
                   <FcGoogle className='text-xl' />
                 </button>
 
