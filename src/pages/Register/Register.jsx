@@ -10,7 +10,8 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
-  const { createUser, logInWithGoogle,loginWithGithub } = useContext(AuthContext);
+  const { createUser, logInWithGoogle, loginWithGithub, loginWithTwitter } =
+    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -48,14 +49,26 @@ const Register = () => {
   // With Github
   const handleGithubRegister = () => {
     loginWithGithub()
-     .then((result) => {
+      .then((result) => {
         console.log(result.user);
-        navigate(location?.state? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
-     .catch((error) => {
+      .catch((error) => {
         console.log("Error: " + error.message);
       });
-  }
+  };
+
+  // With Twitter
+  const handleTwitterRegister = () => {
+    loginWithTwitter()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log("Error: " + error.message);
+      });
+  };
 
   return (
     <div className='flex flex-col h-screen bg-base-200'>
@@ -213,12 +226,16 @@ const Register = () => {
                 {/* Login with Github */}
                 <button
                   onClick={() => handleGithubRegister()}
-                className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                  className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
+                >
                   <DiGithubBadge className='text-2xl' />
                 </button>
 
                 {/* Login with X or Twitter */}
-                <button className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'>
+                <button
+                  onClick={() => handleTwitterRegister()}
+                  className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
+                >
                   <RiTwitterXLine className='text-2xl' />
                 </button>
               </div>
