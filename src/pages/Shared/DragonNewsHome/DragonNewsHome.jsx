@@ -18,11 +18,11 @@ const DragonNewsHome = () => {
 
   return (
     <div>
-      <p className='text text-3xl poppins-medium'>Dragon News Home</p>
+      <p className='text-3xl Home-title hidden md:block lg:block xl:block 2xl:block'>Dragon News Home</p>
       {/* All News */}
       <div>
         {news.map((singleNews) => (
-          <div className='my-6' key={singleNews._id}>
+          <div className='my-3 md:my-5 lg:my-6 xl:my-6 2xl:m-6' key={singleNews._id}>
             {/* One News */}
             <div className='border-2 border-base-200'>
               {/* Author Info */}
@@ -48,11 +48,10 @@ const DragonNewsHome = () => {
               {/* News */}
               <div className='px-3 flex flex-col gap-3'>
                 {/* Title */}
-                <p className='mt-5 text-2xl poppins-bold'>{singleNews.title}</p>
+                <p className='mt-5 text-xl Home-title'>{singleNews.title}</p>
                 {/* Image */}
                 <img src={singleNews.image_url} alt={singleNews.title} />{" "}
                 {/* Article */}
-                {/* <p>{singleNews.details}</p> */}
                 {singleNews.details.length > 250 ? (
                   <>
                     <p>{singleNews.details.slice(0, 250)}... <Link

@@ -19,13 +19,13 @@ const LeftSideNav = () => {
     <div>
       {/* All Category */}
       <div>
-        <p className='text-2xl poppins-medium'>All Category</p>
+        <p className='text-3xl Home-title hidden md:block lg:block xl:block 2xl:block'>All Category</p>
         <div className='ml-7'>
           {categories.map((category) => (
             <div>
               <Link
                 to='/'
-                className='flex p-3 poppins-medium text-gray-500 hover:text-black hover:bg-base-200 rounded-lg'
+                className='flex p-3 Home-content text-gray-500 hover:text-black hover:bg-base-200 rounded-lg'
                 key={category.id}
               >
                 {category.name}
@@ -41,11 +41,11 @@ const LeftSideNav = () => {
         <div className='card shadow-xl p-2'>
           <img className='rounded-lg' src={StockMarket} alt='' />
           <div className='mt-3'>
-            <p className='poppins-medium'>
+            <p className='Home-content'>
               Global Stock Markets Surge After Central Banks Announce New
               Stimulus Measures
             </p>
-            <div className='flex justify-between mt-3'>
+            <div className='flex justify-between mt-3 gap-3 text-sm Home-date'>
               <div>
                 <p>Stock Market</p>
               </div>
@@ -60,11 +60,11 @@ const LeftSideNav = () => {
         <div className='card shadow-xl p-2'>
           <img className='rounded-lg' src={Nasa} alt='' />
           <div className='mt-3'>
-            <p className='poppins-medium'>
+            <p className='Home-content'>
               NASA's Mars Rover Discovers Evidence of Ancient Water Flow on the
               Red Planet
             </p>
-            <div className='flex justify-between mt-3'>
+            <div className='flex justify-between mt-3 gap-3 text-sm Home-date'>
               <div>
                 <p>Space Science</p>
               </div>
@@ -79,10 +79,10 @@ const LeftSideNav = () => {
         <div className='card shadow-xl p-2'>
           <img className='rounded-lg' src={Climate} alt='' />
           <div>
-            <p className='poppins-medium'>
+            <p className='Home-content'>
               Protests Erupt Worldwide in Response to Climate Change Inaction{" "}
             </p>
-            <div className='flex justify-between mt-3'>
+            <div className='flex justify-between mt-3 gap-3 text-sm Home-date'>
               <div>
                 <p>Climate Change</p>
               </div>

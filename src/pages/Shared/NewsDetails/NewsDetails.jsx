@@ -10,15 +10,12 @@ const NewsDetails = () => {
   const { id } = useParams();
   const [selectedNews, setSelectedNews] = useState(null);
 
-  console.log(newsItem);
-
   useEffect(() => {
     // Scroll to the top of the page when the component loads
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     const news = newsItem.find((n) => n._id === id);
     setSelectedNews(news);
-    console.log(selectedNews);
   }, [newsItem, id]);
 
   return (

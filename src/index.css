@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -57,4 +58,19 @@
     font-family: "Philosopher", serif;
     font-weight: 700;
     font-style: normal;
+  }
+
+  .Home-title {
+    font-family: "Lora", serif;
+    font-weight: 700;
+  }
+
+  .Home-content {
+    font-family: "Lora", serif;
+    font-weight: 600;
+  }
+
+  .Home-date {
+    font-family: "Lora", serif;
+    font-weight: 500;
   }
