@@ -25,8 +25,8 @@ const NewsDetails = () => {
         <Header></Header>
         <Navbar></Navbar>
       </div>
-      <div className='grid grid-cols-4 gap-10'>
-        <div className='col-span-3'>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+        <div className='col-span-1 md:col-span-2 lg:col-span-3'>
           <div className='border p-5'>
             <div>
               {selectedNews && (
